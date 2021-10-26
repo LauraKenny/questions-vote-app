@@ -1,25 +1,63 @@
-import logo from './logo.svg';
+import 'bulma/css/bulma.min.css';
 import './App.css';
+import Card from './components/Card.js';
+import { useEffect, useState } from 'react';
 
-function App() {
+export default function App() {
+  const [questions, setQuestions] = useState([]);
+
+  const getQuestions = () => {
+    const requestOptions = {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    };
+    fetch('https://polls.apiblueprint.org/questions', requestOptions)
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(function (data) {
+        setQuestions(data);
+      });
+  };
+
+  useEffect(() => {
+    getQuestions();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="main">
+      <header>
+        <h1 className="title is-1">Questions</h1>
       </header>
+      <div className="columns is-desktop">
+        <div className="column"></div>
+        <div className="column is-four-fifths">
+          <div className="columns">
+            <div className="column">
+              <Card />
+            </div>
+            <div className="column">
+              <Card />
+            </div>
+            <div className="column">
+              <Card />
+            </div>
+            <div className="column">
+              <Card />
+            </div>
+            <div className="column">
+              <Card />
+            </div>
+          </div>
+        </div>
+        <div className="column"></div>
+      </div>
     </div>
   );
 }
-
-export default App;
