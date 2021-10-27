@@ -1,6 +1,6 @@
 import 'bulma/css/bulma.min.css';
 import '../App.css';
-import Card from './Card.js';
+import QuestionCard from './QuestionCard.js';
 import { useEffect, useState } from 'react';
 
 export default function Questions() {
@@ -48,7 +48,7 @@ export default function Questions() {
                 {row.map((question, i) => {
                   return (
                     <div className="column is-one-quarter" key={i}>
-                      <Card question={question} />
+                      <QuestionCard question={question} />
                     </div>
                   );
                 })}

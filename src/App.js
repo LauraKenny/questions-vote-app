@@ -9,7 +9,7 @@ export default function App() {
     <Router>
       <div>
         <Switch>
-          <Route path="/question/:questionId">
+          <Route path="/questions/:questionId">
             <QuestionDetail />
           </Route>
           <Route path="/">

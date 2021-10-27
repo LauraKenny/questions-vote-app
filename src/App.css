@@ -6,3 +6,18 @@
 header {
   padding-bottom: 30px;
 }
+
+.test {
+  display: flex;
+  justify-content: space-around;
+}
+
+.button-container {
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+}
+
+.choice-text {
+  width: 100%;
+}
